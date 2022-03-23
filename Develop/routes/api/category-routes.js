@@ -3,6 +3,8 @@ const { Category, Product } = require('../../models');
 // TODO: add products
 // TODO: determine whether async await is needed. ORM Day 1:21:23
 
+// TODO: Figure out whether categorySeeds.js file is needed. See ORM Day 1 1:30:00
+
 // The `/api/categories` endpoint
 
 router.get('/', async (req, res) => {
