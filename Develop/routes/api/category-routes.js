@@ -1,15 +1,22 @@
 const router = require('express').Router();
 const { Category, Product } = require('../../models');
+// TODO: add products
+// TODO: determine whether async await is needed. ORM Day 1:21:23
 
 // The `/api/categories` endpoint
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   // find all categories
   // TODO: be sure to include its associated Products ORM Day 1 59:40
   // put everything inside a {} inside findAll().
-  Category.findAll().then((categoryData) => {
-    res.json(categoryData);
-  })
+  try {
+    const categoryData = await Category.findAll()
+    if (!categoryData.length) return res.status(404).json([]);
+      return res.json(categoryData);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
 });
 
 router.get('/:id', (req, res) => {
@@ -27,13 +34,13 @@ router.post('/', (req, res) => {
     id: req.body.id,
     category_name: req.body.category_name
   })
-  .then((newCategory) => {
-    // send the newly created row as a json object
-    res.json(newCategory);
-  })
-  .catch((err) => {
-    res.json(err);
-  })
+    .then((newCategory) => {
+      // send the newly created row as a json object
+      res.json(newCategory);
+    })
+    .catch((err) => {
+      res.json(err);
+    })
 });
 
 router.put('/:id', (req, res) => {
@@ -49,10 +56,10 @@ router.put('/:id', (req, res) => {
       },
     }
   )
-  .then((updatedCategory) => {
-    res.json(updatedCategory);
-  })
-  .catch((err) => res.json(err));
+    .then((updatedCategory) => {
+      res.json(updatedCategory);
+    })
+    .catch((err) => res.json(err));
 });
 
 router.delete('/:id', (req, res) => {

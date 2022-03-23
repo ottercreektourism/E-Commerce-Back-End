@@ -4,7 +4,9 @@ const routes = require('./routes');
 const sequelize = require('./config/connection')
 
 // Import models to sync table with the database
-const Category = require('./models/Category')
+const Category = require('./models/Category');
+const Product = require('./models/Product');
+const Tag = require('./models/Tag');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
