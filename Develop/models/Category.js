@@ -6,23 +6,19 @@ class Category extends Model {}
 
 Category.init(
   {
-    // define columns
     id: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       // I think these below will automatically happen-- See ORM Day 1 39:40
-      
-      // Doesn't allow null values.
-      // Set as primary key.
-      // Uses auto increment.
 
-      // PrimaryKey true tells sequelize to not create q primary key called id because
+      // PrimaryKey true tells sequelize to not create a primary key called id because
       // we already have one. good for if i wanted my id to be category_id, bc then it would create another for me called id.
       PrimaryKey: true,
       autoIncrement: true
     },
     category_name: {
-      type: DataTypes.STRING
-      // doesnt allow null values
+      type: DataTypes.STRING,
+      allowNull: false
     }
   },
   {
