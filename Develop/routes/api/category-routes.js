@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
   try {
     const categoryData = await Category.findAll()
     if (!categoryData.length) return res.status(404).json([]);
-      return res.json(categoryData);
+    return res.json(categoryData);
   } catch (err) {
     console.error(err);
     res.status(500).json(err);
@@ -24,7 +24,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', (req, res) => {
   // find one category by its `id` value
   // TODO: be sure to include its associated Products. see ORM Day 1 59:40
-  Category.findByPk(re.params.id).then((categoryData) => {
+  Category.findByPk(req.params.id).then((categoryData) => {
     res.json(categoryData);
   })
 });
@@ -32,6 +32,7 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
   // create a new category
   // use create() to add new row to the Category table
+  // TODO: not sure if I need to specify what the req.body should look like
   Category.create({
     id: req.body.id,
     category_name: req.body.category_name
