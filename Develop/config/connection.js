@@ -4,7 +4,6 @@ require('dotenv').config();
 
 const Sequelize = require('sequelize');
 
-// What are the question marks doing
 const sequelize = process.env.JAWSDB_URL
   ? new Sequelize(process.env.JAWSDB_URL)
   : new Sequelize(

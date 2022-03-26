@@ -12,7 +12,9 @@ router.get('/', async (req, res) => {
   // TODO: be sure to include its associated Products ORM Day 1 59:40
   // put everything inside a {} inside findAll().
   try {
-    const categoryData = await Category.findAll()
+    const categoryData = await Category.findAll({
+      include: [Product]
+    })
     if (!categoryData.length) return res.status(404).json([]);
     return res.json(categoryData);
   } catch (err) {
@@ -32,7 +34,6 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
   // create a new category
   // use create() to add new row to the Category table
-  // TODO: not sure if I need to specify what the req.body should look like
   Category.create({
     id: req.body.id,
     category_name: req.body.category_name

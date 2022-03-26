@@ -13,7 +13,7 @@ Category.init(
 
       // PrimaryKey true tells sequelize to not create a primary key called id because
       // we already have one. good for if i wanted my id to be category_id, bc then it would create another for me called id.
-      PrimaryKey: true,
+      primaryKey: true,
       autoIncrement: true
     },
     category_name: {
