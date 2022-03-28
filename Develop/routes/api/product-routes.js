@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
   // find all products
   try {
     const productData = await Product.findAll({
-      include: [Category, {model: Tag, through: ProductTag}]
+      include: [Category, { model: Tag, through: ProductTag }]
     })
     if (!productData.length) return res.status(404).json([]);
     return res.json(productData);
@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', (req, res) => {
   // find a single product by its `id`
   Product.findbyPk({
-    where: {id: req.params.id},
+    where: { id: req.params.id },
     include: [Category, { model: Tag, through: ProductTag }]
   }).then((productData) => {
     res.json(productData);
@@ -110,10 +110,10 @@ router.delete('/:id', (req, res) => {
       id: req.params.id,
     },
   })
-  .then((deletedProduct) => {
-    res.json(deletedProduct);
-  })
-  .catch((err) => res.json(err));
+    .then((deletedProduct) => {
+      res.json(deletedProduct);
+    })
+    .catch((err) => res.json(err));
 });
 
 module.exports = router;

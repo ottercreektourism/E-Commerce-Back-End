@@ -29,7 +29,7 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
   // create a new tag
-  tag.create({
+  Tag.create({
     id: req.body.id,
     tag_name: req.body.tag_name
   })

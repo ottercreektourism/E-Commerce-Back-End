@@ -10,7 +10,6 @@ const { Category, Product } = require('../../models');
 router.get('/', async (req, res) => {
   // find all categories
   // TODO: be sure to include its associated Products ORM Day 1 59:40
-  // put everything inside a {} inside findAll().
   try {
     const categoryData = await Category.findAll({
       include: [Product]
@@ -26,7 +25,8 @@ router.get('/', async (req, res) => {
 router.get('/:id', (req, res) => {
   // find one category by its `id` value
   // TODO: be sure to include its associated Products. see ORM Day 1 59:40
-  Category.findByPk(req.params.id).then((categoryData) => {
+  // ***
+  Category.findByPk(req.params.id, {include: [Product]}).then((categoryData) => {
     res.json(categoryData);
   })
 });
