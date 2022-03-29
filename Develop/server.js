@@ -18,7 +18,7 @@ app.use(routes);
 
 // force true drops and recreates the Category table if it already exists regardless of whether theres stuff in it
 // TODO: Dont want to have this when I push it to heroku
-sequelize.sync({force: true}).then(() => {
+sequelize.sync({force: false}).then(() => {
   app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}!`);
   });
