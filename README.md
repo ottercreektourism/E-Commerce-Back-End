@@ -29,7 +29,7 @@ This repository includes the back-end of an e-commerce site. With knowledge on h
   After installing necessary dependencies, connect to you schema.sql through mysql, and then type npm start and press the Enter key. Testing was done in insomnia. If the user would like to test the application, they can navigate to Insomnia and select their desired route from the dropdown menu, and put https://localhost:8080/api/products in the search bar. You can replace "products" with "tags" or "categories" to search for them instead, and put "/" and a number, i.e., "/2" to retrieve the id 2 in that route.
   
  
-    ## Video walkthroughs
+   ## Video walkthroughs
 
 Part 1: https://youtu.be/SQxsIjf5UWo
 
