@@ -9,10 +9,6 @@ Category.init(
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      // I think these below will automatically happen-- See ORM Day 1 39:40
-
-      // PrimaryKey true tells sequelize to not create a primary key called id because
-      // we already have one. good for if i wanted my id to be category_id, bc then it would create another for me called id.
       primaryKey: true,
       autoIncrement: true
     },
